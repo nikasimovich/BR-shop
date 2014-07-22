@@ -69,10 +69,12 @@
         </ul>
       </div>
       <div id="store-bar">
-          <p class="store">Store</p>
+          <div class="store">
+            Store
             <div class="cart-link">
               <a href="/cart"><img src="{{ 'cart.svg' | asset_url }}" /> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
             </div>
+          </div>
       </div>
 
       <div class="social-links half column left-aligned">

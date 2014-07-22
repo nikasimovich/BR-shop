@@ -130,6 +130,10 @@ h1, h2, h3, h4, h5, h6 {
   @extend .beta;
 }
 
+
+div#main {
+  margin-bottom: 250px;
+}
 /* Responsive images and videos. */
 img, iframe { max-width: 100%; }
 
@@ -848,25 +852,27 @@ footer {
   top:0;
   right:0;
   z-index: 998;
-  padding: 90vmin 0;
+  padding: 100vmin 0;
   cursor: pointer;
   /*padding: 80vmin 1.15px;*/
 }
 
 
-#store-bar p {
+#store-bar .store {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);
+  -webkit-transform-origin: 0 0;
+  -moz-transform-origin: 0 0;
   font-size: 18px;
-  /* display: inline-block; */
-  width: 115px;
-  /* position: absolute; */
-  margin-left: -42px;
-  /* left: 0; */
-  /* bottom: 200px; */
   cursor: pointer;
+  padding-left: 10px;
+  white-space: nowrap;
 }
 
+.cart-link {
+  display: inline-block;
+  margin-left: 1em;
+}
 
 .temporarytitle {
   font-size: 26px;
@@ -1142,3 +1148,13 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   transition: background-color .2s ease-in-out;
 }
 
+.related-products {
+  font-size: 12px;
+  text-align: left;
+}
+
+
+.related-products.money {
+  font-size: 12px !important;
+  text-align: left;
+}
