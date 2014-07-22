@@ -1,0 +1,202 @@
+/* Webfont: Swiss721-Medium */@font-face {
+    font-family: 'SwissMed';
+    src: url('Swiss721-Medium.eot'); /* IE9 Compat Modes */
+    src: url('Swiss721-Medium.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Swiss721-Medium.woff') format('woff'), /* Modern Browsers */
+         url('Swiss721-Medium.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Swiss721-Medium.svg#Swiss721-Medium') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: bold;
+    text-rendering: optimizeLegibility;
+}
+
+/* Webfont: Swiss721BT-Roman */@font-face {
+    font-family: 'Swiss';
+    src: url('Swiss721BT-Roman.eot'); /* IE9 Compat Modes */
+    src: url('Swiss721BT-Roman.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('Swiss721BT-Roman.woff') format('woff'), /* Modern Browsers */
+         url('Swiss721BT-Roman.ttf') format('truetype'), /* Safari, Android, iOS */
+         url('Swiss721BT-Roman.svg#Swiss721BT-Roman') format('svg'); /* Legacy iOS */
+    font-style: normal;
+    font-weight: normal;
+    text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: 'Swiss';
+  font-size: 18px;
+  line-height: 20px;
+  color: #373636;
+}
+
+#overview {
+  background: rgba(0,0,0,0) !important;
+  border-bottom: 2px solid #373636;
+  padding: 10px;
+  margin: 0;
+  }
+
+  #thumbs span {
+    color: #373636;
+    font-size: 18px;
+  }
+
+  #cost, #order-num {
+    font-family: 'SwissMed';
+    color: #373636;
+    text-shadow: none;
+    display: block;
+    /* margin-top: 0; */
+    vertical-align: center;
+    margin-bottom: -2%;
+    margin-top: 10%;
+  }
+
+  #steps {
+    /* margin-top: 10px; */
+    letter-spacing: .75px;
+    font-size: 10px;
+    font-family: 'SwissMed', sans-serif;
+    font-style: normal;
+    /* margin: 0; */
+    text-transform: uppercase;
+    /* padding-top: 0; */
+  }
+
+  h3 {
+    font-size: 18px;
+    color: #373636;
+  }
+
+  #thumbs div {
+    padding: 1px;
+    margin: 0 4px 0 0;
+    border: none;
+    float: left;
+    text-align: center;
+  }
+
+  #thumbs h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: .75;
+  }
+
+  #thumbs span {
+    color: #373636;
+    font-size: 14px;
+    line-height: 16px;
+  }
+
+  #email {
+    line-height: 100%;
+    background-color: #fff;
+    border: none;
+    padding: 20px;
+    margin: 10px 0;
+  }
+  #email input {
+    padding: 4px;
+  }
+
+#email label {
+  display: block;
+  margin-bottom: 7px;
+  font-size: 12px;
+}
+
+#products {
+  border-right: 2px solid #373636;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  border: 2px solid;
+}
+
+#addresses {
+  background: #FFF;
+  height: auto;
+}
+
+input[type=text], input[type=password], textarea {
+   border: 2px solid #373636;
+   padding: 2px;
+   height: 20px;
+   font-size: 12px;
+   color: #046CC6;
+}
+
+.form td.lbl {
+  height: 30px;
+}
+
+
+.group h3 {
+  font-size: 16px;
+}
+
+
+.group {
+  border: none!important;
+  background-color: #fff;
+}
+
+body {
+  background-color: #f0f0f0;
+  font-family: 'SwissMed', sans-serif;
+}
+
+span.sign-in-message {
+  font-size: 12px;
+  margin-left: 4px;
+}
+
+.field-with-errors .error-message {
+  color: #046CC6;
+  font-weight: bold;
+}
+
+.field-with-errors {
+  background-color: #FFF;
+  border: 2px solid #046CC6;
+  padding: 3px 5px;
+  line-height: 140%;
+  color: #046CC6 !important;
+}
+
+
+.address-notification {
+  background: none;
+  border: 2px solid #046CC6;
+  color: #046CC6;
+  text-align: center;
+  padding: 5px;
+}
+
+
+a {
+  color: #045CC6;
+  text-decoration: none;
+  -webkit-transition: color .2s ease-in-out;
+  -moz-transition: color .2s ease-in-out;
+  -ms-transition: color .2s ease-in-out;
+  -o-transition: color .2s ease-in-out;
+  transition: color .2s ease-in-out;
+}
+
+a:hover {
+  color: #373636;
+  text-decoration: none;
+}
+
+
+#overview .hint {
+  color: #373636;
+  font-style: normal;
+  font-size: 12px;
+}

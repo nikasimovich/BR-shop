@@ -1,0 +1,289 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <!--[if IE]><meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1' /><![endif]-->
+
+  <title>
+  {{ page_title }}{% if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif %}{% if current_page != 1 %} &ndash; Page {{ current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+  </title>
+
+  {% if page_description %}
+  <meta name="description" content="{{ page_description | escape }}" />
+  {% endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  {% include 'open-graph-tags' %}
+  {% include 'twitter-card' %}
+
+  {{ content_for_header }}
+
+  {{ 'style.scss.css' | asset_url | stylesheet_tag }}
+  {{ 'slick.css' | asset_url | stylesheet_tag }}
+  {{ 'social/social-icons.css' | global_asset_url | stylesheet_tag }}
+  {{ '//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' | stylesheet_tag }}
+
+  {{ '//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic' | stylesheet_tag }}
+
+  <!--[if lt IE 9]>
+  {{ '//html5shiv.googlecode.com/svn/trunk/html5.js' | script_tag }}
+  <![endif]-->
+
+  {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+  {% if template contains 'customers' %}
+  {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+  {% endif %}
+
+  <!-- Additional Shopify helpers that will likely be added to the global shopify_common.js some day soon. -->
+  {{ 'shopify_common.js'  | asset_url | script_tag }}
+
+  {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+  {{ '//code.jquery.com/jquery-1.11.0.min.js' | script_tag }}
+  {{ '//code.jquery.com/jquery-migrate-1.2.1.min.js' | script_tag }}
+  {{ 'slick.min.js'  | asset_url | script_tag }}
+
+  <script>jQuery('html').removeClass('no-js').addClass('js');</script>
+
+</head>
+
+<body id="{{ page_title | handle }}" class="{% if customer %}customer-logged-in {% endif %}template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }}" >
+
+  <div class="container">
+
+    <header class="row">
+
+      <div id="menu-header">
+        <ul id="menu-main-menu" class="menu">
+          <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-4 current_page_item menu-item-14"><a href="http://www.bradleyrothenberg.com/">Bradley Rothenberg</a></li>
+          <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a href="http://www.bradleyrothenberg.com/about/">About</a></li>
+          <li id="menu-item-22" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22"><a href="http://www.bradleyrothenberg.com/work/">Work</a></li>
+          <li id="menu-item-21" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-21"><a href="http://www.bradleyrothenberg.com/research/">Research</a></li>
+          <li id="menu-item-151" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-151"><a href="http://www.bradleyrothenberg.com/press/">Press</a></li>
+        </ul>
+      </div>
+      <div id="store-bar">
+          <p class="store">Store</p>
+            <div class="cart-link">
+              <a href="/cart"><img src="{{ 'cart.svg' | asset_url }}" /> {{ cart.item_count }} {{ cart.item_count | pluralize: 'item', 'items' }} ({{ cart.total_price | money }})</a>
+            </div>
+      </div>
+
+      <div class="social-links half column left-aligned">
+{% comment %}      {% include 'social-links' %}
+{% endcomment %}      </div>
+
+      {% comment %}
+        Note on checkout link: it is a good idea to avoid linking to /checkout directly because shops that use
+        Paypal Express Checkout and/or Google Checkout have special checkout buttons on the /cart page. Also,
+        special instructions for the seller are entered on the /cart page. Finally, the universal tracking code
+        of Google Analytics may not work if linking directly to the /checkout page.
+      {% endcomment %}
+
+      <div class="half column right-aligned">
+
+        {% if shop.customer_accounts_enabled %}
+        <div class="customer-links">
+          {% if customer %}
+            Logged in as <a href="/account">{{ customer.first_name }}</a> · {{ 'Log out' | customer_logout_link }}
+          {% else %}
+            {{ 'Log in' | customer_login_link }}
+            {% if shop.customer_accounts_optional %}
+            or {{ 'Create an account' | customer_register_link }}
+            {% endif %}
+          {% endif %}
+        </div>
+        {% endif %}
+
+      </div>
+
+      {% comment %}
+        It would be nice if the logo was a shop setting, rather than a theme setting.
+        But for now, it is a theme setting. The shop logo is uploaded on the theme settings page.
+        Link to the theme settings page of currently published theme will always be:
+        http://www.shopify.com/admin/themes/current/settings.
+        To add theme settings to a theme, see this: http://docs.shopify.com/themes/theme-templates/settings
+        Theme settings are added to http://www.shopify.com/admin/themes/current#config/settings.html
+      {% endcomment %}
+
+      <div class="masthead full column clear centered" role="banner">
+        {% if settings.use_logo %}
+        <a id="logo" href="/">
+          {{ 'logo.png' | asset_url | img_tag: shop.name }}
+        </a>
+        {% else %}
+{% comment %}        <a id="site-title" href="/">
+          {{ shop.name }}
+        </a>{% endcomment %}
+        {% endif %}
+        {% if template == 'index' %}
+        {% comment %}
+          Many SEO audit tools look for a h1 tag on the home page. Let's give 'em one.
+          Other pages should use the resource name as h1 tag. For example, on the product
+          page, the product title will use a h1 tag.
+        {% endcomment %}
+        <h1 class="hidden">{{ shop.name }}</h1>
+        {% endif %}
+      </div>
+
+      <div class="clear full column">
+
+        {% comment %}
+          Main Navigation
+        {% endcomment %}
+        {% include 'site-nav' %}
+
+        {% comment %}
+          IE8 and IE9 don't support the HTML5 placeholder attribute, so it's a good idea to use JavaScript
+          to show and hide the placeholder text.
+          Have a look in assets/shop.js.liquid to see sample JavaScript for this.
+        {% endcomment %}
+        <form action="/search" method="get" class="search-form right" role="search">
+          <input name="q" type="search" id="search-field" placeholder="Search store..." value="{{ search.terms | escape }}" />
+          <input type="submit" id="search-submit" value="Search" />
+        </form>
+
+      </div>
+
+    </header>
+
+    <div id="main" role="main">
+      {% comment %}}
+        We have a template file to render.
+        That's what content_for_layout is for.
+      {% endcomment %}
+      {{ content_for_layout }}
+    </div>
+
+    <footer>
+
+      {% if linklists.footer.links.size > 0 %}
+      <p role="navigation">
+      {% for link in linklists.footer.links %}
+        <a href="{{ link.url }}" title="{{ link.title }}"{% if link.active %} class="active"{% endif %}>{{ link.title }}</a>
+      {% endfor %}
+      {% if shop.customer_accounts_optional %}
+      {{ 'Sign up' | customer_register_link }}
+      {% endif %}
+      </p>
+      {% endif %}
+
+      {% unless shop.enabled_payment_types == empty %}
+	  <div class="payment-types">
+        {% for type in shop.enabled_payment_types %}
+        <img width="40" src="{{ type | payment_type_img_url }}" />
+        {% endfor %}
+      </div>
+      {% endunless %}
+
+      <p role="contentinfo" class="secondfooter">
+        <span class="logotype">Bradley Rothenberg</span>
+        <span>381 Broadway #203</span>
+        <span>New York, NY 10013</span>
+        <span>917-710-1396</span>
+        <span><a href="mailto:studio@brandleyrothenberg.com?Subject=Hello" target="_top">studio@bradleyrothenberg.com</a></span>
+
+        <div id="footer-mailing">
+                <div id="mc_embed_signup" class="footermailing">
+                <form class="form" action="http://bradleyrothenberg.us8.list-manage.com/subscribe/post?u=a2dee844d5f0278bf010e6bd0&amp;id=2e07a9a8cb" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                  <label for="mce-EMAIL">Sign up for our mailing list</label>
+                  <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder=" " required>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;"><input type="text" name="b_a2dee844d5f0278bf010e6bd0_2e07a9a8cb" tabindex="-1" value=""></div>
+                    <div  class="clear form"><input type="submit" value="Ok" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                </form>
+                </div>
+              </div>
+
+
+        <div class="footer-social">
+            <a href="http://facebook.com/bradley.rothenberg" target="_blank">
+              <svg class="footer-social" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+              <g>
+                <defs>
+                  <rect id="SVGID_1_" y="0.165" width="19.835" height="19.835"/>
+                </defs>
+                <clipPath id="SVGID_2_">
+                  <use xlink:href="#SVGID_1_"  overflow="visible"/>
+                </clipPath>
+                <path clip-path="url(#SVGID_2_)" fill="#F0F0F0" d="M19.835,20V0.165H0V20h9.74v-8.745H8V8.739h1.74v-0.79V7.176V7.047
+                  c0-0.744,0.019-1.895,0.561-2.607c0.57-0.754,1.354-1.266,2.7-1.266c2.194,0,3.118,0.312,3.118,0.312l-0.434,2.578
+                  c0,0-0.726-0.209-1.402-0.209s-1.282,0.241-1.282,0.918v0.274v0.902v0.79h2.774l-0.194,2.516h-2.58V20H19.835z"/>
+              </g>
+              </svg>
+            </a>
+
+            <a href="http://instagram.com/bradleyrothenberg/" target="_blank">
+              <svg class="footer-social" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+              <g>
+                <defs>
+                  <rect id="SVGID_1_" y="0.165" width="19.835" height="19.835"/>
+                </defs>
+                <clipPath id="SVGID_2_">
+                  <use xlink:href="#SVGID_1_"  overflow="visible"/>
+                </clipPath>
+                <path clip-path="url(#SVGID_2_)" fill="#F0F0F0" d="M6.026,8.223H6.013C5.997,8.257,5.985,8.293,5.969,8.328
+                  c-0.015,0.036-0.03,0.071-0.045,0.106c-0.214,0.51-0.346,1.061-0.346,1.648c0,2.393,1.947,4.339,4.34,4.339
+                  c2.392,0,4.337-1.946,4.337-4.339c0-0.59-0.133-1.145-0.349-1.657c-0.013-0.029-0.024-0.058-0.037-0.087
+                  c-0.017-0.038-0.03-0.077-0.048-0.115h-0.015c-0.22-0.463-0.509-0.885-0.87-1.24h0.007c-0.11-0.108-0.239-0.196-0.36-0.292
+                  c-0.091-0.072-0.173-0.154-0.27-0.218c-0.096-0.064-0.203-0.108-0.303-0.165c-0.142-0.079-0.277-0.166-0.428-0.229
+                  c-0.13-0.054-0.271-0.084-0.405-0.126c-0.133-0.041-0.26-0.094-0.397-0.123c-0.279-0.056-0.568-0.086-0.863-0.086H9.917H9.917
+                  c-0.112,0-0.216,0.024-0.325,0.032C9.411,5.79,9.229,5.795,9.056,5.83C8.791,5.884,8.535,5.966,8.289,6.067
+                  c-0.011,0.004-0.023,0.006-0.034,0.01C8.037,6.167,7.833,6.286,7.633,6.411C7.598,6.432,7.559,6.447,7.525,6.469
+                  C7.396,6.555,7.284,6.661,7.167,6.76C7.075,6.836,6.974,6.9,6.89,6.983h0.006C6.535,7.338,6.245,7.76,6.026,8.223"/>
+                <path clip-path="url(#SVGID_2_)" fill="#F0F0F0" d="M15.497,10.082c0,3.076-2.503,5.579-5.579,5.579s-5.58-2.503-5.58-5.579
+                  c0-0.653,0.119-1.277,0.326-1.859H0V20h19.835V8.223h-4.663C15.379,8.805,15.497,9.429,15.497,10.082"/>
+                <path clip-path="url(#SVGID_2_)" fill="#F0F0F0" d="M18.596,3.884h-2.479V1.405h2.479V3.884z M0,0.165v6.817h5.281
+                  c1.003-1.493,2.706-2.479,4.637-2.479c1.93,0,3.634,0.986,4.636,2.479h5.281V0.165H0z"/>
+              </g>
+              </svg>
+            </a>
+
+            <a href="https://twitter.com/brad_rothenberg" target="_blank">
+              <svg class="footer-social" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 width="20px" height="20px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+              <g>
+                <defs>
+                  <rect id="SVGID_1_" x="0" y="2.001" width="20" height="16.999"/>
+                </defs>
+                <clipPath id="SVGID_2_">
+                  <use xlink:href="#SVGID_1_"  overflow="visible"/>
+                </clipPath>
+                <path clip-path="url(#SVGID_2_)" fill="#F0F0F0" d="M20,4.014c-0.736,0.341-1.527,0.572-2.357,0.676
+                  c0.847-0.531,1.499-1.372,1.804-2.375c-0.792,0.492-1.671,0.849-2.604,1.042c-0.749-0.834-1.815-1.355-2.995-1.355
+                  c-2.266,0-4.104,1.921-4.104,4.291c0,0.336,0.037,0.664,0.105,0.978c-3.41-0.179-6.433-1.887-8.457-4.484
+                  C1.039,3.421,0.836,4.158,0.836,4.945c0,1.489,0.725,2.802,1.826,3.572C1.989,8.494,1.356,8.301,0.803,7.98
+                  c0,0.018,0,0.036,0,0.054c0,2.08,1.414,3.814,3.291,4.208c-0.345,0.098-0.707,0.15-1.081,0.15c-0.265,0-0.522-0.027-0.772-0.078
+                  c0.522,1.705,2.037,2.947,3.833,2.98c-1.404,1.152-3.173,1.838-5.096,1.838c-0.332,0-0.658-0.021-0.979-0.061
+                  C1.815,18.289,3.973,19,6.289,19c7.548,0,11.675-6.539,11.675-12.209c0-0.186-0.004-0.371-0.011-0.556
+                  C18.754,5.63,19.449,4.875,20,4.014"/>
+              </g>
+              </svg>
+            </a>
+
+          </div>
+          </div>
+
+      </p>
+
+    </footer>
+
+    {% comment %}Shopify does not support Internet Explorer 6 nor 7. It does encourage themes to support IE8 until the end of 2014.{% endcomment %}
+    <!--[if lt IE 8]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+  </div><!-- end of #container -->
+
+  {{ 'shop.js'  | asset_url | script_tag }}
+
+</body>
+</html>
