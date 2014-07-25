@@ -1,6 +1,6 @@
 {% comment %}
 It may be a good idea to provide a theme setting that lets a merchant decide how many products to show per row
-on collection pages. Or, it may be a good idea to provide a control on the store front which lets a shopper decide 
+on collection pages. Or, it may be a good idea to provide a control on the store front which lets a shopper decide
 whether items be presented in a grid or in a list.
 That information about the presentation can be passed on to the product-grid-item.liquid snippet via the 'with' argument.
 Use of the 'with' argument is explained here: http://docs.shopify.com/themes/theme-templates/snippets.
@@ -22,12 +22,14 @@ Here, for the sake of teaching, we will use 2 presentation options:
 
 <li class="{{ product-grid-item }}{% unless product.available %} sold-out{% endunless %}{% if on_sale %} on-sale{% endif %}{% if product-grid-item == 'four-per-row' %}{% cycle 'last': '', '', '', ' last-in-row' %}{% elsif product-grid-item == 'three-per-row' %}{% cycle 'last': '', '', ' last-in-row' %}{% endif %} centered">
 
-  <div class="prod-image-wrap">  
+<div class="master-container">
+  <div class="prod-image-wrap">
     <a href="{{ product.url | within: collection }}">
+      <div class="colorizer"></div>
       <img src="{{ product | img_url: 'grande' }}" alt="{{ product.featured_image.alt | escape }}" />
     </a>
   </div><!-- .prod-image-wrap -->
-  
+
   <div class="prod-caption">
       <a href="{{ product.url | within: collection }}">
         {{ product.title }}
@@ -45,7 +47,7 @@ Here, for the sake of teaching, we will use 2 presentation options:
       {% endcomment %}
       <span class="shopify-product-reviews-badge" data-id="{{ product.id }}"></span>
   </div><!-- .prod-caption -->
-  
+</div>
 </li>
 
 {% comment %}

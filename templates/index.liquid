@@ -16,19 +16,6 @@
 {% endcomment %}
 
 
-
-{% comment %}
-    Adding tags to home page
-{% endcomment %}
-
-<!--THIS IS THE TEMPORARY HOMEPAGE TITLE. TO CHANGE IT BACK TO DISPLAYING TAGS, REMOVE THIS, AND ADD TAGS TO THE PRODUCTS VISIBLE ON THE HOMEPAGE!-->
-<div class="temporarytitle">
-  Everything
-</div>
-
-
-
-
 {% unless settings.homepage_page == blank or pages[settings.homepage_page].empty? %}
 {% assign page = pages[settings.homepage_page] %}
 <div class="rte grid-margins">
@@ -38,6 +25,32 @@
 
 {% unless settings.homepage_collection == blank or collections[settings.homepage_collection].empty? %}
 {% assign collection = collections[settings.homepage_collection] %}
+
+{% comment %}
+    Adding tags to home page
+{% endcomment %}
+
+
+
+
+<h1 class="left">{{ collection.title }}</h1>
+
+{% comment %}
+  Collection sorting. Needs the JavaScript that is at the bottom of this file.
+{% endcomment %}
+{% if collection.products_count > 1 %}
+<select class="sort-by right">
+  <option value="manual">Featured</option>
+  <option value="price-ascending">Price: Low to High</option>
+  <option value="price-descending">Price: Hight to Low</option>
+  <option value="title-ascending">A-Z</option>
+  <option value="title-descending">Z-A</option>
+  <option value="created-ascending">Oldest to Newest</option>
+  <option value="created-descending">Newest to Oldest</option>
+  <option value="best-selling">Best Selling</option>
+ </select>
+{% endif %}
+
 <ul class="grid clearfix">
   {% for product in collection.products %}
     {% include 'product-grid-item' with 'three-per-row' %}
@@ -52,33 +65,11 @@
   </ul>
   {% endunless %}
 
-
-
-{% comment %}
-    Adding tags to home page
-{% endcomment %}
-
-{% if collection.all_tags.size > 0 %}
-<ul class="subcategories clearfix clear">
-  <li class="{% unless current_tags %} active{% endunless %}">
-    {{ 'Everything' | link_to_remove_tag: current_tags.first }}
-  </li>
-  {% for tag in collection.all_tags %}
-  {% if current_tags contains tag %}
-  <li class="active">
-    {{ tag | link_to_remove_tag: tag }}
-  </li>
-  {% else %}
-  <li>
-    {{ tag | link_to_tag: tag }}
-  </li>
-  {% endif %}
-  {% endfor %}
-</ul>
-{% endif %}
-
-{% if collection.description.size > 0 %}
-<div class="rte">
-  {{ collection.description }}
-</div>
-{% endif %}
+  <script>
+  jQuery('.sort-by')
+    .val('{{ homepage_collection .sort_by | default: homepage_collection .default_sort_by }}')
+    .on('change', function() {
+      Shopify.queryParams.sort_by = jQuery(this).val();
+      location.search = jQuery.param(Shopify.queryParams);
+    });
+  </script>

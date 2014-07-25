@@ -27,6 +27,7 @@ body {
   font-size: 18px;
   line-height: 20px;
   color: #373636;
+  background-color: #fff !important;
 }
 
 #overview {
@@ -45,6 +46,7 @@ body {
     font-family: 'SwissMed';
     color: #373636;
     text-shadow: none;
+    font-size: 50px;
     display: block;
     /* margin-top: 0; */
     vertical-align: center;
@@ -115,7 +117,7 @@ body {
 input {
   padding: 0;
   margin: 0;
-  border: 2px solid;
+  border: 3px solid;
 }
 
 #addresses {
@@ -124,7 +126,7 @@ input {
 }
 
 input[type=text], input[type=password], textarea {
-   border: 2px solid #373636;
+   border: 3px solid #373636;
    padding: 2px;
    height: 20px;
    font-size: 12px;
@@ -138,6 +140,7 @@ input[type=text], input[type=password], textarea {
 
 .group h3 {
   font-size: 16px;
+  border-bottom: none;
 }
 
 
@@ -163,7 +166,7 @@ span.sign-in-message {
 
 .field-with-errors {
   background-color: #FFF;
-  border: 2px solid #046CC6;
+  border: 3px solid #046CC6;
   padding: 3px 5px;
   line-height: 140%;
   color: #046CC6 !important;
@@ -172,7 +175,7 @@ span.sign-in-message {
 
 .address-notification {
   background: none;
-  border: 2px solid #046CC6;
+  border: 3px solid #046CC6;
   color: #046CC6;
   text-align: center;
   padding: 5px;
@@ -199,4 +202,144 @@ a:hover {
   color: #373636;
   font-style: normal;
   font-size: 12px;
+}
+
+
+#container.slim #header {
+  width: 430px;
+  background: rgba(0, 0, 0, 0);
+}
+
+#container.slim #main {
+  width: 413px;
+  padding: 0 15px;
+  background: #FFF;
+}
+
+#container {
+  font-size: 16px;
+}
+
+#main {
+  width: 776px;
+  background-color: #FFF;
+  padding: 0 13px;
+  background: rgba(0,0,0,0);
+}
+
+#header {
+  width: 792px;
+  padding: 8px 5px;
+  background: rgba(0, 0, 0, 0);
+}
+
+
+#container.slim #footer {
+  width: 430px;
+  background: rgba(0, 0, 0, 0);
+}
+
+#footer {
+  width: 792px;
+  padding: 25px 5px 10px 5px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0);
+  text-align: center;
+  color: #888;
+  font-size: 80%;
+}
+
+
+#buttons {
+  /* border-bottom: 1px solid #CCC; */
+  padding: 12px 10px;
+  background: #fff;
+  border-bottom: none;
+  margin: 0;
+}
+
+
+#buttons input {
+  font-weight: bold;
+  background-color: rgba(0, 0, 0, 0);
+  padding: 4px;
+}
+
+button#create-account-btn {
+  border: 3px solid;
+  background-color: #FFF;
+  font-weight: bold;
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'SwissMed', arial, sans-serif;
+}
+
+
+h1 {
+  font-size: 50px;
+  display: block;
+  color: #000;
+  line-height: 120%;
+  margin-bottom: 34px;
+  margin-bottom: 2px;
+}
+
+h1 span.subtitle {
+  /* font-size: 50%; */
+  line-height: 110%;
+  color: #373636;
+  font-size: 26px;
+}
+
+
+#overview {
+  background: rgba(0, 0, 0, 0) !important;
+  border-bottom: 3px solid #373636;
+  padding: 10px;
+  margin: 0;
+}
+
+#thumbs h3 span {
+  color: #045CC6;
+  font-size: 90%;
+}
+
+
+button#create-account-btn:hover{
+  background-color: #f0f0f0 !important;
+  -webkit-transition: background-color .2s ease-in-out;
+  -moz-transition: background-color .2s ease-in-out;
+  -ms-transition: background-color .2s ease-in-out;
+  -o-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
+}
+
+input {
+  padding: 0;
+  margin: 0;
+  border: 3px solid #373636;
+  background-color: #FFF;
+  font-weight: bold;
+  padding: 5px;
+  font-size: 16px;
+  font-family: 'SwissMed', arial, sans-serif;
+}
+
+
+input:hover{
+  background-color: #f0f0f0 !important;
+  -webkit-transition: background-color .2s ease-in-out;
+  -moz-transition: background-color .2s ease-in-out;
+  -ms-transition: background-color .2s ease-in-out;
+  -o-transition: background-color .2s ease-in-out;
+  transition: background-color .2s ease-in-out;
+}
+
+
+.flash.error {
+  background: #FFF;
+  border: 3px solid #045CC6;
+  color: #045CC6;
+  font-size: 16px;
+  margin-bottom: 50px;
 }
