@@ -844,13 +844,13 @@ footer {
 #menu-header li:first-of-type {
   font-family: 'Swiss';
   font-weight: 600;
-  letter-spacing: 3.25px;
+  letter-spacing: 2.25px;
 }
 
 .logo-text {
   font-family: 'SwissMed', arial, sans-serif;
   font-weight: bold;
-  letter-spacing: 3.25px;
+  letter-spacing: 2.25px;
 }
 
 #store-bar {
@@ -941,14 +941,14 @@ footer a:hover {
 }
 
 #footer-mailing .yks-mailchimpFormDivRowField input {
-  border: 3px solid #373636;
+  border: 2px solid #373636;
   height: 35px;
   margin-top: 0;
 }
 
 #footer-mailing button,#footer-mailing html input[type="button"],#footer-mailing input[type="reset"],#footer-mailing input[type="submit"] {
   /* color: #373636; */
-  border: 3px solid;
+  border: 2px solid;
   height: 40px;
   width: 40px;
   text-align: center;
@@ -984,7 +984,7 @@ footer a:hover {
   height: 30px;
   display: inline-block;
   margin-top: 17px;
-  border: 3px solid;
+  border: 2px solid;
   margin-top: 10px;
   width: 175px;
   }
@@ -997,7 +997,7 @@ footer a:hover {
 
 #footer-mailing button, #footer-mailing html input[type="button"], #footer-mailing input[type="reset"], #footer-mailing input[type="submit"]{
   /* color: #373636; */
-  border: 3px solid;
+  border: 2px solid;
   height: 40px;
   width: 40px;
   text-align: center;
@@ -1012,7 +1012,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   color: #373636;
   height: auto;
   padding: 10px;
-  border: 3px solid !important;
+  border: 2px solid !important;
   width: auto;
   border-radius: 0;
   text-align: center;
@@ -1044,7 +1044,7 @@ input {
   height: 30px;
   display: inline-block;
   margin-top: 17px;
-  border: 3px solid;
+  border: 2px solid;
   margin-top: 10px;
   }
 
@@ -1061,7 +1061,7 @@ input {
   background-color: rgba(0, 0, 0, 0);
   border-radius: 0;
   color: #373636;
-  border: 3px solid;
+  border: 2px solid;
   width: auto;
   font-weight: bold;
   font-size: 16px;
@@ -1123,7 +1123,7 @@ textarea, input[type="text"], input[type="email"], input[type="url"], input[type
   max-width: 100%;
   padding: 0.4em 0.6em;
   background-color: rgba(0, 0, 0, 0);
-  border: 3px solid;
+  border: 2px solid;
   border-radius: 0;
   outline: none;
   -webkit-appearance: none;
@@ -1147,7 +1147,7 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
     color: #373636;
     height: auto;
     padding: 10px;
-    border: 3px solid !important;
+    border: 2px solid !important;
     width: auto;
     border-radius: 0;
     text-align: center;
@@ -1164,14 +1164,16 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
   transition: background-color .2s ease-in-out;
 }
 
-.related-products {
-  font-size: 12px;
-  text-align: left;
+.related-products * {
+  font-size: 14px;
+  text-align: left !important;
+  padding: 0;
+  /* margin-top: 0; */
 }
 
 
 .related-products.money {
-  font-size: 12px !important;
+  font-size: 14px !important;
   text-align: left;
 }
 
@@ -1241,3 +1243,30 @@ button, html input[type="button"], input[type="reset"], input[type="submit"] {
 .sort-by {
   display: none;
 }
+
+
+.payment-types img {
+  display: none;
+}
+
+
+.customer-links {
+  display: none;
+}
+
+
+@media only screen and (max-width: 1024px) {
+
+    #menu-header {
+      height: 90px;
+    }
+
+    #menu-header a {
+      display: block;
+    }
+
+    body {
+      padding: 5%;
+    }
+}
+
