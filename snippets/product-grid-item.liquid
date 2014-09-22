@@ -34,13 +34,13 @@ Here, for the sake of teaching, we will use 2 presentation options:
       <a href="{{ product.url | within: collection }}">
         {{ product.title }}
       </a>
-      <span class="prod-price">
+{% comment %}      <span class="prod-price">
         {% if product.price_varies %}From{% endif %}
         {{ product.price | money }}
         {% if on_sale %}
         <s class="compare-at-price">{{ product.compare_at_price | money }}</s>
         {% endif %}
-      </span>
+      </span>{% endcomment %}
       {% comment %}
         All themes by Shopify should support the Product Reviews app out of the box.
         https://apps.shopify.com/product-reviews

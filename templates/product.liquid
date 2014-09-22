@@ -47,6 +47,8 @@
 
       <h1 itemprop="name">{{ product.title }}</h1>
 
+
+
       {% assign product_vendor_handle = product.vendor | handle %}
       {% comment %}
       Do we have a collection that has the same name as our product vendor name?
@@ -58,17 +60,8 @@
       {% else %}
         {% assign vendor_url = product.vendor | url_for_vendor %}
       {% endif %}
+
       <h2 itemprop="brand" class="delta">{{ product.vendor | link_to: vendor_url }}</h2>
-
-      <div id="product-description" class="rte" itemprop="description">
-        {{ product.description }}
-      </div>
-
-      {% comment %}
-        All themes by Shopify should support the Product Reviews app out of the box.
-        https://apps.shopify.com/product-reviews
-      {% endcomment %}
-      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
 
       <div id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer" class="delta">
         <meta itemprop="priceCurrency" content="{{ shop.currency }}" />
@@ -87,6 +80,20 @@
           {% endif %}
         </p>
       </div>
+
+
+
+      <div id="product-description" class="rte" itemprop="description">
+        {{ product.description }}
+      </div>
+
+      {% comment %}
+        All themes by Shopify should support the Product Reviews app out of the box.
+        https://apps.shopify.com/product-reviews
+      {% endcomment %}
+      <div id="shopify-product-reviews" data-id="{{ product.id }}">{{ product.metafields.spr.reviews }}</div>
+
+
 
       {% assign hide_default_title = false %}
       {% if product.variants.size == 1 and product.variants.first.title contains 'Default' %}
@@ -109,6 +116,7 @@
 
       <div id="product-add">
         <input class="addtocartbutton" type="submit" name="add" id="add" class="primary button" value="Add to cart">
+        {% include 'addthis' %}
       </div>
 
 
